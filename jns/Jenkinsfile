@@ -10,7 +10,7 @@ node('master') {
 
 currentBuild.result = 'SUCCESS'
 
-def tests = 'mar.flo@interia.pl'
+def tests = 'mar.flo@interia.pl, marx1000@poczta.fm'
 
 step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: tests, sendToIndividuals: true])
 }
