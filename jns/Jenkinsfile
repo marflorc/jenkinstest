@@ -13,7 +13,7 @@ try {
     currentBuild.result = 'FAILURE'
   }
   finally {
-    mail to: 'marx1000@poczta.fm',
+    mail to: 'marx1000@poczta.fm , mar.flo@interia.pl',
       subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
       body: "${env.BUILD_URL} has result ${currentBuild.result}"
   }
