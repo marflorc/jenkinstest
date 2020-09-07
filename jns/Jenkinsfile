@@ -28,7 +28,7 @@ for (User u : users) {
     currentBuild.result = 'FAILURE'
   }
   finally {
-    mail to: mailAddress.toString(),
+    mail to: $mailAddress,
       subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
       body: "${env.BUILD_URL} has result ${currentBuild.result}"
   }
