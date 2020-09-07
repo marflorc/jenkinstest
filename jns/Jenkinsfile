@@ -21,4 +21,5 @@ for (User u : users) {
  }
 
 print(addg)
+step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: addg, sendToIndividuals: true])
 }
