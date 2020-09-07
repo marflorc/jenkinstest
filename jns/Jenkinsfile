@@ -17,20 +17,11 @@ for (User u : users) {
 		}
 		addg += mailAddress
 		
-    } catch (UsernameNotFoundException e) { }
- }
-
-print(addg)
-print(users)
-
-   try {
-        sh 'exit 1'
-        currentBuild.result = 'SUCCESS'
-    } catch (any) {
-        currentBuild.result = 'FAILURE'
-        throw any //rethrow exception to prevent the build from proceeding
-    } finally {
+    } catch (UsernameNotFoundException e) { 
+	} finally {
         step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'me@me.com', sendToIndividuals: true])
     }
-}
+ }
+ 
 
+}
