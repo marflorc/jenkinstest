@@ -3,7 +3,7 @@ import hudson.tasks.Mailer
 import jenkins.model.Jenkins
 import org.acegisecurity.userdetails.UsernameNotFoundException
 
-
+node('master') {
 def realm = Jenkins.getInstance().getSecurityRealm()
 def users = User.getAll()
 def addg = "".toString()
@@ -23,10 +23,14 @@ for (User u : users) {
 print(addg)
 print(users)
 
-node('master') {
-
-
-currentBuild.result = 'SUCCESS'
-
-step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'mar.flo@interia.pl', sendToIndividuals: true])
+   try {
+        sh 'exit 1'
+        currentBuild.result = 'SUCCESS'
+    } catch (any) {
+        currentBuild.result = 'FAILURE'
+        throw any //rethrow exception to prevent the build from proceeding
+    } finally {
+        step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'me@me.com', sendToIndividuals: true])
+    }
 }
+
