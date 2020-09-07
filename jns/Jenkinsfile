@@ -1,0 +1,14 @@
+node {
+import hudson.model.User
+import hudson.tasks.Mailer
+import jenkins.model.Jenkins
+
+def realm = Jenkins.getInstance().getSecurityRealm()
+def user = realm.getAllUsers()
+for(User u : users) {
+    def mailAddress = u.getProperty(Mailer.UserProperty.class).getAddress()
+    print(mailAddress + ", ")
+}
+
+
+}
