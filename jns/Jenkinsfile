@@ -7,7 +7,7 @@ node('master') {
 
 def realm = Jenkins.getInstance().getSecurityRealm()
 def users = User.getAll()
-def addg = "".toString()
+
 
 
 currentBuild.result = 'SUCCESS'
