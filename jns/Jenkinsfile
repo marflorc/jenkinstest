@@ -27,7 +27,5 @@ print(users)
 node{
 currentBuild.result = 'SUCCESS'
 
-def tests = 'mar.flo@interia.pl'
-
-step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: tests, sendToIndividuals: true])
+step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'mar.flo@interia.pl', sendToIndividuals: true])
 }
