@@ -21,5 +21,8 @@ for (User u : users) {
  }
 
 print(addg)
+
+currentBuild.result = 'SUCCESS'
+
 step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: addg, sendToIndividuals: true])
 }
