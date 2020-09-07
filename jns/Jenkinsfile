@@ -28,7 +28,8 @@ for (User u : users) {
     currentBuild.result = 'FAILURE'
   }
   finally {
-    mail to: $mailAddress,
+	  def asfg = 'marx1000@poczta.fm , mar.flo@interia.pl'
+    mail to: '$mailAddress',
       subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
       body: "${env.BUILD_URL} has result ${currentBuild.result}"
   }
