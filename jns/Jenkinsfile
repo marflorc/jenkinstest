@@ -4,29 +4,17 @@ import jenkins.model.Jenkins
 import org.acegisecurity.userdetails.UsernameNotFoundException
 
 node('master') {
-	try{
-def realm = Jenkins.getInstance().getSecurityRealm()
-def users = User.getAll()
-def addg = "".toString()
-for (User u : users) {
-    try {
-        realm.loadUserByUsername(u.getId()) // throws UsernameNotFoundException
-        def mailAddress = u.getProperty(Mailer.UserProperty.class).getAddress().toString()
-		
-		if(addg.length() > 0) {
-			addg +=", "
-		}
-		addg += mailAddress
-		
-    } catch (UsernameNotFoundException e) { 
-	} finally {
-       currentBuild.result = 'SUCCESS'
-	   step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'marx1000@poczta.fm', sendToIndividuals: true])
-    }
- }
-	}
-	finally {
-	 step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'marx1000@poczta.fm', sendToIndividuals: true])
-	}
-
+try {
+     
+    
+    currentBuild.result = 'SUCCESS'
+  }
+  catch (err) {
+    currentBuild.result = 'FAILURE'
+  }
+  finally {
+    mail to: 'bcl@nclasters.org',
+      subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+      body: "${env.BUILD_URL} has result ${currentBuild.result}"
+  }
 }
