@@ -20,7 +20,7 @@ for (User u : users) {
 		
     } catch (UsernameNotFoundException e) { 
 	} finally {
-       
+       currentBuild.result = 'SUCCESS'
     }
  }
 	}
