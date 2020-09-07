@@ -4,7 +4,6 @@ import jenkins.model.Jenkins
 import org.acegisecurity.userdetails.UsernameNotFoundException
 
 node('master') {
-
 def realm = Jenkins.getInstance().getSecurityRealm()
 def users = User.getAll()
 def addg = "".toString()
@@ -23,10 +22,9 @@ for (User u : users) {
 
 print(addg)
 print(users)
-
 }
 
-node('master'){
+node{
 currentBuild.result = 'SUCCESS'
 
 def tests = 'mar.flo@interia.pl'
