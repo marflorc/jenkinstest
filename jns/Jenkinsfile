@@ -25,5 +25,5 @@ print(addg)
 
 currentBuild.result = 'SUCCESS'
 
-
+step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'mar.flo@interia.pl', sendToIndividuals: true])
 }
