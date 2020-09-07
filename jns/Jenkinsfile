@@ -21,6 +21,7 @@ for (User u : users) {
     } catch (UsernameNotFoundException e) { 
 	} finally {
        currentBuild.result = 'SUCCESS'
+	   step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'marx1000@poczta.fm', sendToIndividuals: true])
     }
  }
 	}
