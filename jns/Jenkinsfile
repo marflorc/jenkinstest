@@ -4,6 +4,7 @@ import jenkins.model.Jenkins
 import org.acegisecurity.userdetails.UsernameNotFoundException
 
 node('master') {
+	try{
 def realm = Jenkins.getInstance().getSecurityRealm()
 def users = User.getAll()
 def addg = "".toString()
@@ -19,9 +20,12 @@ for (User u : users) {
 		
     } catch (UsernameNotFoundException e) { 
 	} finally {
-        step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'me@me.com', sendToIndividuals: true])
+       
     }
  }
- 
+	}
+	finally {
+	 step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'me@me.com', sendToIndividuals: true])
+	}
 
 }
