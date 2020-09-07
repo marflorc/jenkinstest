@@ -22,6 +22,7 @@ for (User u : users) {
  }
 
 print(addg)
+print(users)
 
 currentBuild.result = 'SUCCESS'
 
