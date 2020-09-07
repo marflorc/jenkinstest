@@ -1,7 +1,9 @@
-node {
 import hudson.model.User
 import hudson.tasks.Mailer
 import jenkins.model.Jenkins
+
+node('master') {
+
 
 def realm = Jenkins.getInstance().getSecurityRealm()
 def user = realm.getAllUsers()
