@@ -5,8 +5,6 @@ import org.acegisecurity.userdetails.UsernameNotFoundException
 
 node('master') {
 
-def realm = Jenkins.getInstance().getSecurityRealm()
-def users = User.getAll()
 
 
 
