@@ -6,7 +6,7 @@ node('master') {
 try {
 
 if(currentBuild.getPreviousBuild().result != null) {
- print(currentBuild.getPreviousBuild().result)
+ print("not")
 } else {
 	print("null")
 }
