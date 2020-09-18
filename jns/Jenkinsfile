@@ -5,8 +5,11 @@ node('master') {
     
 try {
 
-
-echo currentBuild.getPreviousBuild().result
+if(currentBuild.getPreviousBuild().result != null) {
+ print(currentBuild.getPreviousBuild().result)
+} else {
+	print("null")
+}
 
 
     currentBuild.result = 'SUCCESS'
