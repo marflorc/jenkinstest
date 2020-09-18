@@ -5,11 +5,6 @@ node('master') {
     
 try {
 
-if(currentBuild?.getPreviousBuild() != null) {
- print(currentBuild?.getPreviousBuild().result)
-} else {
-	print("null")
-}
 
 
     currentBuild.result = 'SUCCESS'
@@ -18,7 +13,12 @@ if(currentBuild?.getPreviousBuild() != null) {
     currentBuild.result = 'FAILURE'
   }
   finally {
-   
+   if(currentBuild.getPreviousBuild() != null && currentBuild.result == currentBuild.getPreviousBuild().result) {
+ print(currentBuild?.getPreviousBuild().result)
+} else {
+	print("null")
+}
+
     
   }
 }
