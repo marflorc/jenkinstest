@@ -5,7 +5,7 @@ node('master') {
     
 try {
 
-if(currentBuild.getPreviousBuild() != null) {
+if(currentBuild?.getPreviousBuild().result != null) {
  print("not")
 } else {
 	print("null")
