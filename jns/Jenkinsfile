@@ -1,7 +1,7 @@
 
 
 node('master') {
-    def addg = ''
+    def addg = 'marx1000@poczta.fm'
     
 try {
 
@@ -19,6 +19,9 @@ try {
 	print("null")
 }
 
+ mail to: "${params.EmailList}",
+     subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+      body: "${env.BUILD_URL} has result ${currentBuild.result}"
     
   }
 }
